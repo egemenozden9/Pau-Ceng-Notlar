@@ -1,6 +1,8 @@
 # Pau-Ceng-Notlar
 notes-to-pass-exam
 
+Bir mühendis adayının 4 yıllık hayatta kalma notları
+
 # Pamukkale Üniversitesi Bilgisayar Mühendisliği Ders Notları 📚
 
 Merhaba! Ben Egemen Özden. Pamukkale Üniversitesi Bilgisayar Mühendisliği öğrencisiyim.  

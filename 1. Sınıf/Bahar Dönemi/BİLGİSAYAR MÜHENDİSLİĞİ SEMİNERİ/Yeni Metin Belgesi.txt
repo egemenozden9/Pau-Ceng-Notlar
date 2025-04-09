@@ -1,0 +1,10 @@
+Pdf'lerdeki Latex kodları ve Overleaf şablonları için bağlantı adresleri
+PDF'lerin kodlarına erişmek isteyenler için bağlantı: 
+
+https://github.com/sevketcakir/latex-course
+
+
+
+Overleaf şablonlarına erişilebilmesi için gerekli bağlantı: 
+
+https://www.overleaf.com/read/tfptnvmxkjcm

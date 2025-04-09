@@ -1,0 +1,299 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{EastLansing}
+  \usecolortheme{default}
+  \usefonttheme{default}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+}
+
+
+\setbeamerfont{caption}{size=\scriptsize}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[turkish,shorthands=:!]{babel}
+\usepackage{hyperref}
+
+
+\title{ Hiperspektral Görüntü Sınıflandırması için Derin Öğrenme }
+\author{Mustafa AKİL \inst{1} \and Merve GÜRASLAN \inst{2} \and Egemen ÖZDEN \inst{3} \and Murat Yetkin ASLAN \inst{4}}
+\institute[Bilgisayar Müh.]{\inst{1} 20253076 \and \inst{2} 21253058 \and \inst{3} 20253074  \and \inst{4} 20253067}
+\date{27.04.2022}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Hiperspektral Görüntü İşleme Nedir}
+\begin{frame}{Hiperspektral Görüntü İşleme Nedir?}
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+Hiperspektral görüntüleme, diğer spektral görüntülemeler gibi bilgiyi toplar ve elektromanyetik tayfta işlemden geçirir. Ama insan gözünün 3 bantta (kırmızı, yeşil ve mavi) algılayabildiği görünür ışıktan başka, spektral (tayfsal) görüntüleme, tayfı birçok banda ayırır. Görüntüyü birçok banda ayıran bu teknik sayesinde, resimlerde çıplak gözle görünenden çok öte şeyleri de kavrayabilme fırsatına sahip oluruz.
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+    \includegraphics[width=\textwidth]{sekil1}
+    \caption{\label{fig:sekil1} Yıllara göre bilimsel makaleler yayınlayan web sitelerinde bu konu hakkında yayınlanan yazıların sayıları.}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\section{Derin Öğrenme Nedir}
+% Second page
+\begin{frame}
+Mühendisler; tarım, maden, fizik ve gözlem gibi konularda uygulama kabiliyetlerini artırabilmek için algılayıcı (sensör) ve işleme sistemleri inşa ederler. Bunlardan biri olan hiperspektral algılayıcılar elektromanyetik tayfın geniş bir bölümünü kullanarak cisimlere bakar. Bazı belirli nesneler elektromanyetik tayf boyunca kendine özgü bir tür "parmak izi" bırakır. Bu parmak izleri spektral (ya da tayfsal) imzalar olarak bilinir ve görüntüsü işlenen nesnenin barındırdığı maddeleri tanımlayabilir. Örneğin, petrolün spektral imzası, maden bilimcilerine yeni petrol sahaları bulmalarında yardımcı olur. \cite{deep-learning}
+    \begin{figure}
+    \includegraphics[width=0.9\textwidth]{sekil2}
+    \caption{\label{fig:sekil2} Görünür Işığın Dalga Boyları.}
+    \end{figure}
+\end{frame}
+
+% Third Page
+\begin{frame}{Derin Öğrenme Nedir}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+Derin öğrenme, dijital sistemlerin yapılandırılmamış, etiketlenmemiş verilere dayalı olarak öğrenmesini ve kararlar almasını sağlamak üzere yapay sinir ağlarını kullanan bir makine öğrenmesi türüdür.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+    \includegraphics[width=0.7\textwidth]{sekil3}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% Fourth page
+\begin{frame}{Derin Öğrenme Nedir}
+  Genellikle makine öğrenmesi, yapay zeka sistemlerini veri ile alınan deneyimleri inceleyerek öğrenecek, desenleri tanıyacak, öneriler sunacak ve uyum sağlayacak biçimde eğitir. Özellikle derin öğrenme söz konusu olduğunda dijital sistemler, yalnızca kural kümelerine yanıt vermek yerine, örneklerden faydalanarak bilgi edinir ve ardından bu bilgileri kullanarak insanlar gibi tepki verir, davranış gösterir ve performans sergiler.
+\end{frame}
+
+% Fifth page
+\begin{frame}{Deep Models }
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{sekil4}
+  \end{figure}
+\end{frame}
+
+% Sixth page
+\section{Derin Ağlar Tabanlı HSI Sınıflandırması}
+\begin{frame}{Derin Ağlar Tabanlı HSI Sınıflandırması}
+\begin{columns}
+  \begin{column}[]{0.5\textwidth}
+Son zamanlarda derin öğrenme en başarılı tekniklerden biri haline geldi ve bilgisayarla görme alanında etkileyici bir performans elde etti. Bu büyük atılımlarla motive edilen HSI’ler uzaktan algılama alanında sınıflandırmak için derin öğrenme de getirilmiştir. Geleneksel el yapımı özelliklere dayalı yöntemlerle karşılaştırıldığında, derin öğrenme karmaşık hiperspektral verilerden üst düzey özellikleri otomatik olarak öğrenebilir. 3’e ayrılır.
+  \end{column}
+  \begin{column}[]{0.5\textwidth}
+    \begin{figure}[]
+      \includegraphics[]{sekil5}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% Seventh page
+\begin{frame}{Spektral Bilgi}
+  HSI’nin en önemli özelliğidir ve sınıflandırma görevlerinde hayati bir rol oynar. Bununla birlikte hiperspektral uzak sensörler genellikle gereksiz bilgiler içeren yüzlerce spektral bant sağlar. Bu nedenle orijinal spektral vektörlerin doğrudan araştırılması sadece yüksek hesaplama maliyetine yol açmakla kalmaz aynı zamanda sınıflandırma performansını da düşürür.
+\end{frame}
+
+% Eigth page
+\begin{frame}
+  \begin{figure}[]
+    \includegraphics[width=\textwidth]{sekil7}
+    \label{fig:sekil3}
+    \caption{GAN temelli sınıflama yaklaşımının illüstrasyonu}
+  \end{figure}
+\end{frame}
+
+% Ninth page
+\begin{frame}{Mekansal Özellikli Ağlar}
+\begin{itemize}
+  \item HSI Sınıflandırması üzerine yapılan önceki araştırmalar, mekânsal özelliklerin sınıflandırıcılara dahil edilmesiyle sınıflandırma doğruluğunun daha da geliştirilebileceğini kanıtlamıştır.
+  \item Doğru HSI sınıflandırması için öğrenilen uzamsal özellikler daha sonra diğer özellik çıkarma teknikleriyle çıkarılan spektral özelliklerle birleştirilir.
+\end{itemize}
+\end{frame}
+
+% Tenth page
+\begin{frame}{Spektral-Uzamsal Özellikli Ağlar }
+  Spektral-uzaysal sınıflandırmanın, hiperspektral görüntüler için spektral bilgi ve uzamsal ipuçlarını entegre ederek sınıflandırma performansını iyileştirmenin etkili bir yolu olduğu bilinmektedir. Bu bildiride, bir koşullu rastgele alan (CRF) modeli kullanan bir oyun-teorik spektral-uzaysal sınıflandırma algoritması (GTA) sunulmakta olup, bu algoritmada, uzamsal bağlamsal bilgiyi dikkate alarak görüntüyü modellemek için CRF'nin kullanıldığı ve bir işbirlikçi oyun tasarlanmaktadır. Algoritma, görüntü sınıflandırması ve oyun teorisi arasında bire bir yazışma kurar. Görüntünün pikselleri oyuncular olarak kabul edilir ve etiketler bir oyundaki stratejiler olarak kabul edilir. Üç hiperspektral veri seti üzerindeki deneysel sonuçlar, önerilen sınıflandırma algoritmasının etkinliğini göstermektedir.
+\end{frame}
+
+% Eleventh page
+\begin{frame}
+\begin{figure}[]
+  \centering
+  \includegraphics[width=\textwidth, height=0.7\textheight]{sekil8}
+  \label{fig:sekil4}
+  \caption{üç kategoriye ayrılabilen spektral-uzamsal özellik ağlarının paradigmaları.}
+\end{figure}
+\end{frame}
+
+\section{Sınırlı Mevcut Örnekler İçin Stratejiler}
+% Twelve
+\begin{frame}{Sınırlı Mevcut Örnekler İçin Stratejiler}
+\begin{itemize}
+  \item Aslında, derin bir ağın eğitimi, ağ parametrelerini öğrenmek için çok sayıda eğitim örneği gerektirir. Bununla birlikte, uzaktan algılama alanında, bu tür etiketli verilerin toplanması pahalı veya zaman gerektiren olduğundan, genellikle yalnızca az miktarda etiketli veri bulunur. Çok sayıda ağırlık arasındaki dengesizlik ve eğitim örneklerinin sınırlı kullanılabilirliği olarak da bilinen bu sorun, sınıflandırma performansının düşük olmasına neden olabilir.
+
+  \item Son zamanlarda, problemle bir dereceye kadar başa çıkmak için bazı etkili yöntemler önerilmiştir. Bu bölümde, derin öğrenmeye dayalı HSI sınıflandırmasını geliştirmeye yönelik bazı stratejiler yer almaktadır.
+\end{itemize}
+\end{frame}
+
+% Thirteen
+\begin{frame}{Veri Büyütme}
+Veri büyütme yukarıdaki sorunun etkili bir çözüm yolu olarak kabul edilir. Bilinen örneklerden yeni eğitim örnekleri oluşturmaya çalışır.
+\end{frame}
+
+% Fourteen
+\begin{frame}{Transfer Öğrenimi}
+Aktarmalı öğrenme, mevcut veri kümelerinden tam olarak yararlanarak, mevcut eğitim örnekleri sınırlı olduğunda ağ performansının bozulması sorununu etkin bir şekilde çözebilir.
+\end{frame}
+
+% Fifteen
+\begin{frame}{Gözetimsiz/Yarı gözetimli özellik öğrenimi}
+Denetimli özellik öğrenimi, HSI sınıflandırma alanında büyük atılımlar kazanmış olsa da, HSI özelliklerini denetimsiz veya yarı denetimli bir şekilde öğrenmeye hala acil bir ihtiyaç vardır. Denetimsiz / yarı denetimli özellik öğreniminin temel amacı, etiketlenmemiş veri miktarından yararlı özellikler
+çıkarmaktır.
+\end{frame}
+
+% Sixteen
+\begin{frame}{Network Optimization(Ağ optimizasyonu)}
+\begin{itemize}
+  \item Ağ optimizasyonunun temel amacı, daha verimli modüller veya işlevler benimseyerek ağ performansını daha da iyileştirmektir. Ek olarak, derin ağlar tarafından çıkarılan özelliklerin temsil kabiliyetini artırmak için diğer ağ optimizasyon stratejilerinden de yararlanılır.
+
+  \item Genel olarak, ağ optimizasyonu hala zor bir sorundur. Gelecekteki çalışmalarda, HSI’nin sınıflandırılması için geliştirilmiş bir ağ tasarlanırken HSI’nin benzersiz özellikleri mümkün olduğunca dikkate alınmalıdır.
+\end{itemize}
+\end{frame}
+
+% Seventeen
+\section{Deneyler}
+\begin{frame}{Deneyler}
+Bu bölümde, esas olarak dört açıdan kapsamlı bir dizi deney gerçekleştiriyoruz. İlk olarak, derin öğrenmenin HSI sınıflandırması üzerindeki geleneksel yöntemlere göre avantajlarını göstermek için bir dizi deney tasarlanmıştır. İkincisi, son teknoloji ürünü birkaç derin öğrenmenin sınıflandırma performansı sistematik olarak karşılaştırılmıştır. Üçüncüsü, "kara kutuyu" daha fazla keşfetmek için öğrenilen derin özellikleri ve ağ ağırlıklarını görselleştiriyoruz. Son olarak, stratejilerin etkinliği daha da analiz edilmektedir. Bu bölümde aşağıdaki fotoğraflar açıklanacaktır.
+\end{frame}
+
+% Eighteen
+\begin{frame}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+          \begin{figure}
+            \includegraphics[height=6.5cm]{sekil9}
+            \label{fig:sekil5}
+            \caption{(a) Üç bantlı yanlış renkli kompozit. (b) Zemin referans verileri ve renk kodu.}
+          \end{figure}
+        \end{column}
+
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \includegraphics[height=6.5cm]{sekil10}
+        \caption{Eğitim ve test örneklerinin sayısal dağılımı}
+        \label{fig:sekil6}
+      \end{figure}
+    \end{column}
+
+    \end{columns}
+\end{frame}
+
+
+% Nineteen
+\begin{frame}{Deneysel Veri Setleri}
+Houston verileri, 2013 IEEE Yerbilimi ve Uzaktan Algılama Derneği (GRSS) veri füzyon yarışması için dağıtıldı. Bu sahne, 2012 yılında Houston Üniversitesi kampüsü ve komşu kentsel alan üzerinde havadaki bir sensör tarafından yakalandı. Şekil \ref{fig:sekil6}, farklı ilgi alanlarına yönelik eğitim ve test örneklerinin sayısı hakkındaki bilgileri göstermektedir.
+\end{frame}
+
+
+% Twenty
+\begin{frame}{Karşılaştırılmış Yöntemler}
+Farklı düzeylerdeki katmanlardan gelen özellikleri katmanlar arasındaki ilişkiyi keşfetmek için daha fazla kaynaştırılır. Ana DFFN’nin dezavantajı, optimal özellik füzyon mekanizmasının bol deneylerle el yapımı bir ortama bağlıdır. Gabor-CNN’de Gabor filtrelemesi ilk olarak şu şekilde kullanılır. HSI’lerin uzamsal özelliklerini çıkarmak için bir ön işleme tekniğidir. Ardından, filtrelenen özellikler basit bir CNN tabanlı sisteme yüklenir. Piksel bazında anlamsal bilgi düşünmek yerine, CNN-PPF ve S-CNN, örnekler arasındaki ilişkileri keşfetmeye odaklanır.
+\end{frame}
+
+% Twenty-one
+\begin{frame}{Sınıflandırma Sonuçları}
+      Şekil\ref{fig:sekil8} farklı yöntemlerle elde edilen sınıflandırma haritalarını gösterir. Bu şekilden, SVM ve JSR yöntemleri ile elde edilen sınıflandırma haritalarının, bazı gürültülü tahminler hala görülebildiğinden çok tatmin edici olmadığını görebiliriz. Buna karşılık, diğer yöntemler "rahatsız edici pikselleri" kaldırmada çok daha iyi performans gösterir ve iki filtreleme tabanlı yöntemi, yani EPF ve Gabor-cnn'yi karşılaştırarak sınıflandırma sonuçlarında daha yumuşak bir görünüm sağlar, epf'nin sınıflandırma haritasının aşırı pürüzsüzleştirici gibi göründüğünü görebiliriz.
+\end{frame}
+
+% Twenty-two
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \includegraphics[height=7cm]{sekil11}
+        \label{fig:sekil7}
+        \caption{(a) SVM [8], (b) EMP [19], (c) JSR [25], (d) EPF [24], (e) 3-D-CNN [56]}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \includegraphics[height=7cm]{sekil12}
+        \label{fig:sekil8}
+        \caption{(f) CNN-PPF [61], (g) Gabor-CNN [79], (h) S-CNN [89], (i) 3-D-GAN [46], and (j) DFFN [87].}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% Twenty-three
+\begin{frame}
+Yukarıdaki deneysel sonuçlardan, derin öğrenmeye dayalı yöntemler, görsel sınıflandırma haritaları ve nicel sonuçlar açısından diğer geleneksel yöntemlere göre büyük avantajlar göstermektedir. Örneğin, SVM, EMP, EPF ve S-CNN dahil olmak üzere çeşitli SVM tabanlı sınıflandırıcıların karşılaştırılmasında, S-CNN, el yapımı özelliklere kıyasla derin özelliklerin etkinliğini doğrulamak için kullanılabilecek üç hiperspektral veri setinde en iyi performansı gösterir. Ek olarak, iki filtre tabanlı yöntem, yani EPF ve Gobar-CNN için, Gabor-cnn'nin oa'sı Houston görüntüsündeki epf'ninkinden yaklaşık \%3.5 daha yüksektir, bu da filtre tekniğini derin eğimle birleştirmenin iyi sınıflandırma sonuçları verebileceğini göstermektedir.
+\end{frame}
+
+% Twenty-four
+\begin{frame}{Derin Özellik Görselleştirmesi}
+  Genel olarak, derin leaming, ağın iç bilgilerinin genellikle belirsiz olduğu çoğu uygulamada bir kara kutu olarak kabul edilebilir. Aslında, içerideki özellikleri keşfetmek, ağ performansını analiz etmek ve derin mimariyi daha da tasarlamak için çok kullanışlıdır. Bu bölümde, derin özellikleri görselleştirmek için örnek olarak Salinas veri setini kullandık. Birinci kıvrımlı tabakadaki farklı kıvrımlı çekirdeklerin ağırlıkları Şek. \ref{fig:sekil11} \ref{fig:sekil11}(a) rastgele başlangıç ağırlıklarını gösterir ve Şek. \ref{fig:sekil11}(b) öğrenilen ağırlıkları gösterir. Bu şekilden, her filtre için ağırlıkların dağılımının daha düzenli hale geldiğini ve eğitimden sonra belirgin dokusal özellikler sunduğunu görebiliriz.
+\end{frame}
+
+% Twenty-five
+\begin{frame}
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm, height=6.0cm]{sekil13}
+  \caption{(a) Salinas veri kümesindeki ilk evrişim katmanının rastgele başlatılan ağırlıkları. (b) Salinas veri setindeki ilk evrişim katmanının ağırlıklarını öğrendi.}
+  \label{fig:sekil11}
+\end{figure}
+\end{frame}
+
+% Twenty-six
+\begin{frame}{Sınırlı Örnekler İçin Stratejilerin Etkinlik Analizi}
+  Bu bölümde, uygulamanın etkinliğini doğrulayacağız. Kısıtlı eğitim örnekleri sorunu için Bölüm IV'te önerilen bazı stratejiler. Özellikle, basit bir CNN ve üç strateji benimsenmektedir. Sınıflandırma doğruluğunu geliştirmek için. Kullanılan tüm CNN’ler yedi evrişimden oluşan aynı mimarilere sahip toplu normalleştirme işleminin ardından katmanlar,bir küresel havuzlama katmanı ve iki tam bağlantılı katmandır. Indian Pines ve Salinas görüntüleri olduğu için veri seti aynı sensör, yani havada Görünür/Kızılötesi Görüntüleme Spektrometresi sensörü tarafından toplanır. CNN-RL için, RL tekniği ağı optimize etmek için CNN'ye dahil edilir.
+\end{frame}
+
+% Twenty-seven
+\begin{frame}
+
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[htbp]
+        \includegraphics[height=6.0cm]{sekil14}
+        \caption{Nadas örneklerinde üç kıvrımlı katmandan çıkarılan özellikler.}
+        \label{fig:sekil9}
+      \end{figure}
+    \end{column}
+
+    \begin{column}{0.7\textwidth}
+      \begin{figure}[htbp]
+        \includegraphics[height=6.0cm]{sekil15}
+        \caption{Örnek sayısına göre farklı yöntemlerle elde edilen OA değerleri.}
+        \label{fig:sekil10}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Sonuç}
+\begin{frame}[allowframebreaks]{Sonuç}
+  Son zamanlarda, derin öğrenme tabanlı HSI sınıflandırması uzaktan algılama alanında önemli bir dikkat çekmiş ve iyi bir performans elde etmiştir. Geleneksel el yapımı özellik tabanlı sınıflandırma yöntemlerinin aksine, derin öğrenme, HSI’lerin karmaşık özelliklerini çok sayıda hiyerarşik katmanla otomatik olarak öğrenebilir. HSI'leri sınıflandırmak için sıklıkla kullanılan birkaç derin modeli kısaca tanıttık. Daha sonra, HSI’ler için derin öğrenme tabanlı sınıflandırma metodolojilerine odaklandık ve mevcut yöntemlere birleşik bir çerçevede genel bir bakış sağladık. Spesifik olarak, HSI sınıflandırmasında kullanılan bu derin ağlar, her kategorinin karşılık gelen özelliği çıkardığı spektral özellikli ağlara, uzamsal özellikli ağlara ve spektral uzamsal özellikli ağlara bölünmüştür. Bu çerçeve sayesinde, derin ağların sınıflandırma için farklı özellik türlerinden tam olarak yararlandığını kolayca görebiliriz. Ayrıca, çeşitli HSI sınıflandırma yöntemlerinin performanslarını karşılaştırdık ve analiz ettik. Farklı yöntemlerle elde edilen sınıflandırma doğrulukları, derin öğrenmeye dayalı yöntemlerin genel olarak derin öğrenmeye dayalı olmayan yöntemlerden daha iyi performans gösterdiğini ve en iyi sınıflandırma performansına ulaştığını göstermektedir. Ayrıca, ağ performansını analiz etmek ve derin mimariyi daha da tasarlamak için yararlı olan derin özellikler ve ağ ağırlıkları görselleştirildi. Sonuç olarak, tüm yaklaşımlar arasında en yüksek iyileşmeyi sağladığını göstermektedir. Bu deneysel sonuç, bu konuyla ilgili gelecekteki çalışma için bazı kılavuzlar sağlayabilir. \cite{article1}
+\end{frame}
+
+\section{Kaynakça}
+\begin{frame}{Kaynakça}
+    \bibliography{kaynak}
+    \bibliographystyle{plain}
+    \scriptsize
+\end{frame}
+
+\end{document}

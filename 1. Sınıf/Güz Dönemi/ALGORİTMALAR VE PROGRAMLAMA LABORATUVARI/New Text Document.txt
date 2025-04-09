@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+
+{   float ort;
+	float toplam = 0.0;
+	float sayilar[5];
+	int i;
+	
+	for (i=0; i<5; i++) {
+		printf ("%d. sayiyi giriniz: ",i+1);
+		scanf ("%f",&sayilar[i]);
+		toplam += sayilar[i];		
+	}
+	 ort = toplam / 5;
+	 printf ("Girdiginiz sayilarin aritmetik ortalamasi %.2f dir",ort);
+	 
+	getch();
+	return 0;
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()         //% den sonra gelen sayı boşluk bırakma 
+                   // örn; %3s , %13d, %8f
+{
+	int i;
+	int n[10]; 
+	//int n[10] = {10,20,30,40,50,60,70,80,90,100};
+	for(i=0; i<=9; i++)
+	printf ("%s%13s\n", "Eleman", "Deger");  //%s karakter dizi formatı
+	
+	for (i=0; i<=9;i++)
+	printf ("%7d%13d\n", i, n[i]);    
+		
+	
+	getch();
+	return 0;
+}
